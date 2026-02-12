@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sis2" />
         <module name="Spring2026" />
+        <module name="sis3" />
       </profile>
     </annotationProcessing>
   </component>
@@ -15,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Spring2026" options="-parameters" />
       <module name="sis2" options="-parameters" />
+      <module name="sis3" options="-parameters" />
     </option>
   </component>
 </project>
