@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Student Management API v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Adlet\",\n  \"lastName\": \"Karimov\",\n  \"email\": \"adlet.karimov@kbtu.kz\",\n  \"dateOfBirth\": \"2003-05-15\",\n  \"phoneNumber\": \"+7-707-123-4567\",\n  \"address\": \"Almaty, Abay ave 52\",\n  \"gpa\": 3.75\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students"]
+        }
+      }
+    },
+    {
+      "name": "Get All Students (Paginated)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students?page=0&size=10&sort=firstName,asc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students"],
+          "query": [
+            {"key": "page", "value": "0"},
+            {"key": "size", "value": "10"},
+            {"key": "sort", "value": "firstName,asc"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Student by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Adlet\",\n  \"lastName\": \"Karimov\",\n  \"email\": \"adlet.updated@kbtu.kz\",\n  \"dateOfBirth\": \"2003-05-15\",\n  \"phoneNumber\": \"+7-707-999-8888\",\n  \"address\": \"Astana, Mangilik El 1\",\n  \"gpa\": 3.90\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Student - Validation Error",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"K\",\n  \"email\": \"not-an-email\",\n  \"gpa\": 5.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students"]
+        }
+      }
+    },
+    {
+      "name": "Get Student - Not Found (404)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/students/9999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "students", "9999"]
+        }
+      }
+    }
+  ]
+}

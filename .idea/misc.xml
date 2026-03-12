@@ -7,6 +7,10 @@
         <option value="$PROJECT_DIR$/SIS1/pom.xml" />
         <option value="$PROJECT_DIR$/SIS2/pom.xml" />
         <option value="$PROJECT_DIR$/SIS3/pom.xml" />
+        <option value="$PROJECT_DIR$/SIS4/event-management-api/pom.xml" />
+        <option value="$PROJECT_DIR$/sis4/pom.xml" />
+        <option value="$PROJECT_DIR$/sis5/pom.xml" />
+        <option value="$PROJECT_DIR$/sis6/pom.xml" />
       </list>
     </option>
   </component>

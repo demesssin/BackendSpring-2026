@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "Kafka Social API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Post Service",
+      "item": [
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"u1\",\n  \"content\": \"Hello Kafka world!\",\n  \"hashtags\": [\"kafka\", \"spring\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/posts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["posts"]
+            }
+          }
+        },
+        {
+          "name": "Get Post by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8082/posts/{{postId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["posts", "{{postId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Post - Not Found (404)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8082/posts/00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["posts", "00000000-0000-0000-0000-000000000000"]
+            }
+          }
+        },
+        {
+          "name": "Create Post - Validation Error (blank content)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"\",\n  \"content\": \"\",\n  \"hashtags\": []\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/posts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["posts"]
+            }
+          }
+        },
+        {
+          "name": "Create Post - Content too long (>280)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"u1\",\n  \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.\",\n  \"hashtags\": []\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/posts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["posts"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Feed Service",
+      "item": [
+        {
+          "name": "Get Feed for user u1",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8082/feed?userId=u1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["feed"],
+              "query": [{"key": "userId", "value": "u1"}]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

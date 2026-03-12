@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Event Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"KBTU Tech Conference 2026\",\n  \"description\": \"Annual technology conference\",\n  \"organizerEmail\": \"organizer@kbtu.kz\",\n  \"location\": \"Almaty, Kazakhstan\",\n  \"eventDate\": \"2026-09-15T10:00:00\",\n  \"ticketPrice\": 5000,\n  \"minAge\": 16\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "Get Event by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/events/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Event",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"KBTU Tech Conference 2026 - Updated\",\n  \"description\": \"Updated annual technology conference\",\n  \"organizerEmail\": \"updated@kbtu.kz\",\n  \"location\": \"Astana, Kazakhstan\",\n  \"eventDate\": \"2026-10-20T14:00:00\",\n  \"ticketPrice\": 7500,\n  \"minAge\": 18\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/events/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Event",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/events/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Event - Validation Error (No Title)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Missing title test\",\n  \"organizerEmail\": \"invalid-email\",\n  \"eventDate\": \"2026-09-15T10:00:00\",\n  \"ticketPrice\": -100,\n  \"minAge\": -5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "Get Event - Not Found (404)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/events/9999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "events", "9999"]
+        }
+      }
+    }
+  ]
+}
